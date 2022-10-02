@@ -1,13 +1,8 @@
 import { useEffect, useState } from 'react';
-import { WeatherAPI } from './api';
 import './App.css';
 import TodayWeather from './components/TodayWeather/TodayWeather';
 import Weather from './components/Weather/Weather';
 import YandexMap from './components/YandexMap/YandexMap';
-
-
-
-
 
 function App() {
 
