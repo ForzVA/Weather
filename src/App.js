@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import { WeatherAPI } from './api';
 import './App.css';
+import TodayWeather from './components/TodayWeather/TodayWeather';
+import Weather from './components/Weather/Weather';
+import YandexMap from './components/YandexMap/YandexMap';
+
+
+
+
 
 function App() {
+
+  let [longitude, setLongitude] = useState(0)
+  let [latitude, setLatitude]  = useState(0)
+
+  useEffect(
+    () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(
+          function showPosition(position) {
+            setLongitude(position.coords.longitude)
+            setLatitude(position.coords.latitude)
+          }
+        )
+      }
+    }, [longitude, latitude]
+  )
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Weather/>
+      <div className="todayWeather">
+      <TodayWeather latitude={latitude} longitude={longitude}  />
+      <YandexMap latitude={latitude} longitude={longitude} />
+      </div>
     </div>
   );
 }

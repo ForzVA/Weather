@@ -1,0 +1,72 @@
+.todayWeather_wrapper {
+    display: flex;
+    width: 680px;
+    flex-direction: column;
+    margin: 15px 0px 0px 0px;
+    border-radius: 15px;
+    /* background-image: url("https://funart.pro/uploads/posts/2021-04/1617401881_24-p-oboi-solnechnaya-pogoda-24.jpg"); */
+    background-color: gray;
+    background-size: cover;
+    padding: 30px;
+}
+
+.todayWeather_header {
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.todayWeather_time {
+    color: rgb(207, 207, 207)
+}
+
+.todayWeather_middle {
+    display: flex;
+    height: 140px;
+}
+
+.todayWeather_temperature {
+    font-size: 100px;
+    text-align: left;
+    color: white;
+    margin-right: 20px;
+}
+
+.todayWeather_svg {
+    text-align: left;
+    color: white; 
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.todayWeather_weather {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 20px;
+    color: white;
+}
+
+.todayWeather_bottom {
+    display: flex;
+}
+
+.todayWeather_wind {
+    font-size: 30px;
+    margin-right: 35px;
+    color:white;
+}
+
+.todayWeather_humidity {
+    font-size: 30px;
+    margin-right: 35px;
+    color:white
+}
+
+.todayWeather_pressure {
+    font-size: 30px;
+    margin-right: 35px;
+    color:white
+}
