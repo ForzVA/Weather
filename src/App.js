@@ -7,10 +7,6 @@ import YandexMap from './components/YandexMap/YandexMap';
 import TwoDaysWeather from './components/TwoDaysWeather/TwoDaysWeather';
 import s from './components/Weather/Weather.module.css'
 
-
-
-
-
 function App() {
 
   let [longitude, setLongitude] = useState(0)
