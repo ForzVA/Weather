@@ -7,8 +7,15 @@ const instance = axios.create({
 })
 
 export const WeatherAPI = {
-    getTodayWeather(lon,lat ) {
+    getTodayWeather(lon, lat) {
         return instance.get(`weather?lang=ru&lat=${lat}&lon=${lon}&appid=${APIKEY}&units=metric`
+        ).then(response => {
+            // console.log(response)
+            return response.data
+        })
+    },
+    getFiveDaysAndThreeHoursWeather(lon, lat) {
+        return instance.get(`forecast?lat=${lat}&lon=${lon}&lang=ru&appid=${APIKEY}&units=metric`
         ).then(response => {
             // console.log(response)
             return response.data
