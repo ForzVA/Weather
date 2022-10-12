@@ -1,0 +1,36 @@
+.main_container {
+    height: 250px;
+    min-width: 1500px;
+    max-width: 1500px;
+    display: flex;
+    align-items: center;
+}
+.window {
+    width: max-content;
+    overflow: hidden;
+}
+
+.all_elements_container {
+    display: flex;
+    width: min-content;
+    flex-direction: row;
+
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 0.7s;
+}
+
+.arrow {
+    cursor: pointer;
+    width: 60px;
+    height:60px;
+}
+
+.arrow_left {
+    margin-right: 5px;
+}
+
+.arrow_right {
+    margin-left: 2px;
+}
+

@@ -2,6 +2,7 @@ import s from './TwoDaysWeather.module.css'
 import { useEffect, useState, } from 'react'
 import { WeatherAPI } from '../../api'
 import TimeWeatherCard from './TimeWeatherCard/TimeWeatherCard'
+import Carousel from '../Carousel/Carousel'
 
 
 function TwoDaysWeather({ latitude, longitude }) {
@@ -13,7 +14,7 @@ function TwoDaysWeather({ latitude, longitude }) {
         let date = new Date()
         date.setHours(0, 0, 0)
         let timestampToday = Math.round(date.getTime() / 1000 + 86400)
-        let timestampTomorrow = timestampToday + 86400
+        let timestampTomorrow = timestampToday + 86400 * 2
         WeatherAPI.getFiveDaysAndThreeHoursWeather(longitude, latitude).then(response => {
             console.log(response)
             let firstArray = []
@@ -23,7 +24,7 @@ function TwoDaysWeather({ latitude, longitude }) {
                     firstArray.push(elem)
                 }
 
-                if (timestampToday > elem.dt || elem.dt < timestampTomorrow) {
+                if (timestampToday < elem.dt && elem.dt <= timestampTomorrow) {
                     secondArray.push(elem)
                 }
             })
@@ -37,24 +38,29 @@ function TwoDaysWeather({ latitude, longitude }) {
     return (
         <div className={s.cards}>
             {console.log(todayWeather)}
+            
             {todayWeather ?
-                todayWeather.map((elem) => {
+            <Carousel>
+                {todayWeather.map((elem) => {
                     return (
                         <div>
                             <TimeWeatherCard today={elem} />
                         </div>
                     )
-                })
+                })}
+                {tomorrowWeather.map((elem) => {
+                    return (
+                        <div>
+                            <TimeWeatherCard today={elem} />
+                        </div>
+                    )
+                })}
+                
+
+
+             </Carousel>
                 : null}
-            {/* {tomorrowWeather ?
-                tomorrowWeather.map((elem) => {
-                    return (
-                        <div>
-                            <TimeWeatherCard today={elem} />
-                        </div>
-                    )
-                })
-                : null} */}
+            
         </div>
     )
 }
