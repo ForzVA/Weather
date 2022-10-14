@@ -20,5 +20,12 @@ export const WeatherAPI = {
             // console.log(response)
             return response.data
         })
+    },
+    getTodayWeatherCity(city) {
+        return instance.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIKEY}`
+        ).then((response) => {
+            // console.log(response)
+            return(response.data)
+        })
     }
 }

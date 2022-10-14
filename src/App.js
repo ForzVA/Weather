@@ -6,11 +6,47 @@ import Weather from './components/Weather/Weather';
 import YandexMap from './components/YandexMap/YandexMap';
 import TwoDaysWeather from './components/TwoDaysWeather/TwoDaysWeather';
 import s from './components/Weather/Weather.module.css'
+import { WeatherAPI } from './api';
+import CitySelection from './components/CitySelection/CitySelection';
 
 function App() {
 
   let [longitude, setLongitude] = useState(0)
   let [latitude, setLatitude] = useState(0)
+  let [city, setCity] = useState(0)
+  let [listOfCities, setListOfCities] = useState(null)
+  let [isEditMode, setEditMode] = useState(false)
+  console.log(city)
+  console.log(longitude)
+  console.log(latitude)
+
+  const activateEditMode = () => {
+    setEditMode(true)
+  }
+
+  const deactivateEditMode = () => {
+    setEditMode(false)
+  }
+
+  const handleChangeCity = (event) => {
+    console.log(event.target.value)
+    if (isEditMode) {
+      setCity(event.target.value)
+      console.log('Сработа таргет-валью')
+    }
+
+  }
+
+  const ChangeCityWithSelect = (event) => {
+    console.log(event)
+    console.log('Сработал объект')
+    let myCity = `${event.name}, ${event.country}${event.state ? `, ${event.state}` : ''}`
+    setCity(myCity)
+    setLongitude(event.lon)
+    setLatitude(event.lat)
+    deactivateEditMode()
+  }
+
 
   useEffect(
     () => {
@@ -25,6 +61,20 @@ function App() {
     }, [longitude, latitude]
   )
 
+  useEffect(
+    () => {
+      if (city) {
+        console.log('Сработл юзэфект с получение листа городов')
+        WeatherAPI.getTodayWeatherCity(city)
+          .then(response => {
+            console.log(response)
+            setListOfCities(response)
+          })
+      }
+
+    }, [city]
+  )
+
   return (
     <div className="App">
       <div className={s.weather_header}>
@@ -35,14 +85,31 @@ function App() {
         </div>
         <div className={s.weather_header_city}>
           <span className={s.weather_header_city_title}>Ваш город:&nbsp;</span>
-          <span className={s.weather_header_city_city}>Александровск</span>
+          {isEditMode
+            ? <div>
+              <div className={s.weather_header_cityInput}>
+                <input type='text'
+                  placeholder="Введите город"
+                  onChange={handleChangeCity}
+                  className={s.weather_header_city__input}
+                >
+                </input>
+              </div>
+              <div className={s.weather_header_city__select}>
+                <CitySelection city={city} listOfCities={listOfCities} ChangeCityWithSelect={ChangeCityWithSelect} />
+              </div>
+            </div>
+            : <span className={s.weather_header_city_city} onClick={activateEditMode}>
+              {city ? city : 'Не выбрано'}
+            </span>
+          }
         </div>
       </div>
       {/* <Weather /> */}
       <TwoDaysWeather longitude={longitude} latitude={latitude} />
-      
+
       <div className="todayWeather">
-        <TodayWeather latitude={latitude} longitude={longitude} />
+        <TodayWeather latitude={latitude} longitude={longitude} city={city} />
         <YandexMap latitude={latitude} longitude={longitude} />
       </div>
     </div>

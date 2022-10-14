@@ -16,7 +16,6 @@ function TwoDaysWeather({ latitude, longitude }) {
         let timestampToday = Math.round(date.getTime() / 1000 + 86400)
         let timestampTomorrow = timestampToday + 86400 * 2
         WeatherAPI.getFiveDaysAndThreeHoursWeather(longitude, latitude).then(response => {
-            console.log(response)
             let firstArray = []
             let secondArray = []
             response.list.map(elem => {
@@ -34,33 +33,26 @@ function TwoDaysWeather({ latitude, longitude }) {
 
     }, [latitude, longitude]
     )
-
     return (
         <div className={s.cards}>
-            {console.log(todayWeather)}
-            
             {todayWeather ?
-            <Carousel>
-                {todayWeather.map((elem) => {
-                    return (
-                        <div>
-                            <TimeWeatherCard today={elem} />
-                        </div>
-                    )
-                })}
-                {tomorrowWeather.map((elem) => {
-                    return (
-                        <div>
-                            <TimeWeatherCard today={elem} />
-                        </div>
-                    )
-                })}
-                
-
-
-             </Carousel>
+                <Carousel>
+                    {todayWeather.map((elem) => {
+                        return (
+                            <div key={elem.dt}>
+                                <TimeWeatherCard today={elem} />
+                            </div>
+                        )
+                    })}
+                    {tomorrowWeather.map((elem) => {
+                        return (
+                            <div key={elem.dt}>
+                                <TimeWeatherCard today={elem} />
+                            </div>
+                        )
+                    })}
+                </Carousel>
                 : null}
-            
         </div>
     )
 }

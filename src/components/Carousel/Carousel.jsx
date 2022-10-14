@@ -14,11 +14,7 @@ const Carousel = ({ children }) => {
     const handleRightArrowClick = () => {
         setOffset((currentOffset) => {
             const newOffset = currentOffset - (208 * 3)
-            console.log(pages.length)
             const maxOffset = -(208 * (pages.length - 7))
-            console.log('текущее значение:' + newOffset)
-            console.log('максимальное значение:' + maxOffset)
-            console.log(Math.max(newOffset, maxOffset))
             return Math.max(newOffset, maxOffset)
         })
     }

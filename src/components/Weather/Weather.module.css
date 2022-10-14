@@ -44,17 +44,21 @@ button:hover {
 }
 
 .weather_header_city {
+    display: flex;
+    align-items:flex-end;
+    width:40%;
     padding-top: 10px;
     margin-right: 20px;
 }
 
 .weather_header_city_title {
+    vertical-align: top;
     font-size: 35px;
     font-weight: 400;
 }
 
 .weather_header_city_city {
-    font-size: 35px;
+    font-size: 28px;
     font-weight: 500;
     border-bottom: 3px solid black;
     cursor: pointer;
@@ -63,4 +67,23 @@ button:hover {
 .cardsWrapper {
     display: flex;
     justify-content: space-between;
+}
+
+.weather_header_city__input{
+    position: relative;
+    height: 30px;
+    width: max-content;
+    font-size: 22px;
+    border-radius: 15px 15px 0px 0px;
+    border: 3px solid gray;
+    padding: 1px 5px 1px 7px;
+}
+
+.weather_header_city__select {
+    position: absolute;
+    z-index: 1;
+} 
+
+input {
+    width: 30px;
 }
