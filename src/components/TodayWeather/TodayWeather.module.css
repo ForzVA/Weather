@@ -40,6 +40,11 @@
     margin-left: 20px;
 }
 
+.todayWeather_svg svg {
+    width: 80px;
+    height: 150px;
+}
+
 .todayWeather_weather {
     display: flex;
     align-items: center;

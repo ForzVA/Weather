@@ -55,3 +55,8 @@
 .block3 {
     grid-area: another;
 }
+
+.svg svg{
+    width: 60px;
+    height: 80px;
+}

@@ -20,10 +20,6 @@ function App() {
     dynamicWidth: window.innerWidth,
     dynamicHeight: window.innerHeight
   });
-  console.log(city)
-  console.log(longitude)
-  console.log(latitude)
-  console.log(screenSize)
 
   const setDimension = () => {
     getDimension({
@@ -83,7 +79,6 @@ function App() {
   useEffect(
     () => {
       if (city) {
-        console.log('Сработл юзэфект с получение листа городов')
         WeatherAPI.getTodayWeatherCity(city)
           .then(response => {
             console.log(response)
@@ -98,9 +93,9 @@ function App() {
     <div className="App">
       <div className={s.weather_header}>
         <div className={s.buttons_wrapper}>
-          <button className={cn(s.weatherNow__button, s.button)}>Сейчас</button>
-          <button className={cn(s.weatherTwoDays__button, s.button)}>Ближайшие два дня</button>
-          <button className={cn(s.weatherSevenDays__button, s.button)}>Следующие семь дней</button>
+          <button className={cn(s.weatherNow__button, s.button)}>Заглушка</button>
+          <button className={cn(s.weatherTwoDays__button, s.button)}>Заглушка побольше</button>
+          <button className={cn(s.weatherSevenDays__button, s.button)}>Заглушка побольше</button>
         </div>
         <div className={s.weather_header_city}>
           <span className={s.weather_header_city_title}>Ваш город:&nbsp;</span>
