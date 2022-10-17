@@ -10,7 +10,8 @@
 .weather_header {
     display: flex;
     align-items: flex-start;
-    padding-top: 50px;
+    justify-content: space-between;
+    height: max-content;
 
 }
 
@@ -86,4 +87,21 @@ button:hover {
 
 input {
     width: 30px;
+}
+
+@media screen and (max-width: 1592px) {
+    .weather_header {
+        display: flex;
+        flex-direction: column;
+        order: +1
+    }
+
+    .buttons_wrapper {
+        order: 1;
+    }
+
+    .weather_header_city {
+        width: 100%;
+        margin-bottom: 30px;
+    }
 }

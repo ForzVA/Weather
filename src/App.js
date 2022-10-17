@@ -11,14 +11,26 @@ import CitySelection from './components/CitySelection/CitySelection';
 
 function App() {
 
-  let [longitude, setLongitude] = useState(0)
-  let [latitude, setLatitude] = useState(0)
-  let [city, setCity] = useState(0)
-  let [listOfCities, setListOfCities] = useState(null)
-  let [isEditMode, setEditMode] = useState(false)
+  const [longitude, setLongitude] = useState(0)
+  const [latitude, setLatitude] = useState(0)
+  const [city, setCity] = useState(0)
+  const [listOfCities, setListOfCities] = useState(null)
+  const [isEditMode, setEditMode] = useState(false)
+  const [screenSize, getDimension] = useState({
+    dynamicWidth: window.innerWidth,
+    dynamicHeight: window.innerHeight
+  });
   console.log(city)
   console.log(longitude)
   console.log(latitude)
+  console.log(screenSize)
+
+  const setDimension = () => {
+    getDimension({
+      dynamicWidth: window.innerWidth,
+      dynamicHeight: window.innerHeight
+    })
+  }
 
   const activateEditMode = () => {
     setEditMode(true)
@@ -46,6 +58,13 @@ function App() {
     setLatitude(event.lat)
     deactivateEditMode()
   }
+  useEffect(() => {
+    window.addEventListener('resize', setDimension);
+    
+    return(() => {
+        window.removeEventListener('resize', setDimension);
+    })
+  }, [screenSize])
 
 
   useEffect(
@@ -106,11 +125,11 @@ function App() {
         </div>
       </div>
       {/* <Weather /> */}
-      <TwoDaysWeather longitude={longitude} latitude={latitude} />
+      <TwoDaysWeather longitude={longitude} latitude={latitude} screenSize={screenSize} />
 
       <div className="todayWeather">
         <TodayWeather latitude={latitude} longitude={longitude} city={city} />
-        <YandexMap latitude={latitude} longitude={longitude} />
+        <YandexMap latitude={latitude} longitude={longitude} screenSize={screenSize} />
       </div>
     </div>
   );

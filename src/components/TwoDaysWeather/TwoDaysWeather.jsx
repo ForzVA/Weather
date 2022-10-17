@@ -5,7 +5,7 @@ import TimeWeatherCard from './TimeWeatherCard/TimeWeatherCard'
 import Carousel from '../Carousel/Carousel'
 
 
-function TwoDaysWeather({ latitude, longitude }) {
+function TwoDaysWeather({ latitude, longitude, screenSize}) {
 
     let [todayWeather, setTodayWeatherArray] = useState()
     let [tomorrowWeather, setTomorrowWeatherArray] = useState()
@@ -36,7 +36,7 @@ function TwoDaysWeather({ latitude, longitude }) {
     return (
         <div className={s.cards}>
             {todayWeather ?
-                <Carousel>
+                <Carousel screenSize={screenSize}>
                     {todayWeather.map((elem) => {
                         return (
                             <div key={elem.dt}>

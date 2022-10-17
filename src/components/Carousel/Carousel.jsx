@@ -2,19 +2,26 @@ import { useEffect, useState, Children, cloneElement } from 'react'
 import s from './Carousel.module.css'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
-const Carousel = ({ children }) => {
+const Carousel = ({ children, screenSize }) => {
+
     const [pages, setPages] = useState([])
     const [offset, setOffset] = useState(0)
+    const [pageWidth, setPageWidth] = useState(0)
+    
+    console.log(Math.floor((screenSize.dynamicWidth - 120) / 208))
+    const elemensPerPage = Math.floor((screenSize.dynamicWidth - 80) / 208)
+
     const handleLeftArrowClick = () => {
         setOffset((currentOffset) => {
             const newOffset = currentOffset + (208 * 3)
             return Math.min(newOffset, 0)
         })
     }
+   
     const handleRightArrowClick = () => {
         setOffset((currentOffset) => {
             const newOffset = currentOffset - (208 * 3)
-            const maxOffset = -(208 * (pages.length - 7))
+            const maxOffset = -(208 * (pages.length - elemensPerPage))
             return Math.max(newOffset, maxOffset)
         })
     }
@@ -25,6 +32,10 @@ const Carousel = ({ children }) => {
         })
         )
     }, [])
+    console.log(`полученный скринсайз: ${screenSize.dynamicWidth}`)
+    useEffect(() => {
+        setOffset(0)
+    }, [screenSize.dynamicWidth])
 
     return (
         <div className={s.main_container}>
