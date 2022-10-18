@@ -35,3 +35,18 @@
     margin-left: 2px;
 }
 
+@media screen and (max-width: 425px) {
+    .all_elements_container {
+        transform: scale(0.8);
+    }
+    .window {
+        overflow-x: scroll;
+    }
+    .window::-webkit-scrollbar {
+        width: 0;
+    }
+
+    .arrow {
+        display: none;
+    }
+}

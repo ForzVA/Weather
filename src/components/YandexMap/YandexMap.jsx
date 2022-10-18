@@ -4,11 +4,15 @@ import s from './YandexMap.module.css'
 
 
 function YandexMap({latitude, longitude, screenSize }) {
-    const [mapWidth, setMapWidth] = useState (730)
+    const [mapWidth, setMapWidth] = useState(730)
+    const [mapHeight, setMapHeight] =useState(395)
 
     useEffect(() => {
-        if (screenSize.dynamicWidth <= 1512) {
-            setMapWidth(screenSize.dynamicWidth - 80 - 25)
+        if(screenSize.dynamicWidth <= 425) {
+            setMapWidth(screenSize.dynamicWidth - 25 - 25)
+            setMapHeight(290)
+        } else if (screenSize.dynamicWidth <= 1512) {
+            setMapWidth(screenSize.dynamicWidth - 25 - 25)
         } else {setMapWidth(730)}
     }, [screenSize])
 
@@ -18,7 +22,7 @@ function YandexMap({latitude, longitude, screenSize }) {
                 <Map state={{
                     center: [latitude, longitude],
                     zoom: 12,
-                }} width={mapWidth} height={395}>
+                }} width={mapWidth} height={mapHeight}>
                     <ZoomControl options={{
                         size: 'large',
                         position: {

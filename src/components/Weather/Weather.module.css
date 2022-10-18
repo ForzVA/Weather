@@ -111,3 +111,15 @@ input {
         margin-bottom: 30px;
     }
 }
+
+@media screen and (max-width: 425px) {
+    .buttons_wrapper {
+        display: none;
+    }
+
+    .weather_header_city {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 10px;
+    }
+}

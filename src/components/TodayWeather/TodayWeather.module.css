@@ -58,28 +58,49 @@
     display: flex;
 }
 
-.todayWeather_wind {
+.todayWeather_wind, .todayWeather_humidity,
+.todayWeather_pressure {
     font-size: 30px;
     margin-right: 35px;
     color:white;
 }
 
-.todayWeather_humidity {
-    font-size: 30px;
-    margin-right: 35px;
-    color:white
-}
-
-.todayWeather_pressure {
-    font-size: 30px;
-    margin-right: 35px;
-    color:white
-}
 
 
 @media screen and (max-width: 1512px) {
     .todayWeather_wrapper {
         width: auto;
         max-width: 100%;
+        margin: 15px 0px 0px 0px;
     }
+}
+
+@media screen and (max-width: 425px) {
+    .todayWeather_weather {
+        display: none;
+    }
+    
+    .todayWeather_bottom {
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .todayWeather_wind, .todayWeather_humidity,
+    .todayWeather_pressure {
+        display: flex;
+        align-items: center;
+        margin-right: 0px;
+        font-size: 25px;
+        margin-bottom: 3px;
+    }
+
+    .todayWeather_temperature {
+        display: flex;
+        align-items: center;
+        font-size: 70px;
+        vertical-align: middle;
+        
+    }
+
+
 }
