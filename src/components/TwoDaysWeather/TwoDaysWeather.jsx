@@ -15,7 +15,8 @@ function TwoDaysWeather({ latitude, longitude, screenSize}) {
         date.setHours(0, 0, 0)
         let timestampToday = Math.round(date.getTime() / 1000 + 86400)
         let timestampTomorrow = timestampToday + 86400 * 2
-        WeatherAPI.getFiveDaysAndThreeHoursWeather(longitude, latitude).then(response => {
+        if( longitude && latitude) {
+           WeatherAPI.getFiveDaysAndThreeHoursWeather(longitude, latitude).then(response => {
             let firstArray = []
             let secondArray = []
             response.list.map(elem => {
@@ -29,7 +30,9 @@ function TwoDaysWeather({ latitude, longitude, screenSize}) {
             })
             setTodayWeatherArray(firstArray)
             setTomorrowWeatherArray(secondArray)
-        })
+        }) 
+        }
+        
 
     }, [latitude, longitude]
     )

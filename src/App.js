@@ -11,8 +11,8 @@ import CitySelection from './components/CitySelection/CitySelection';
 
 function App() {
 
-  const [longitude, setLongitude] = useState(0)
-  const [latitude, setLatitude] = useState(0)
+  const [longitude, setLongitude] = useState(null)
+  const [latitude, setLatitude] = useState(null)
   const [city, setCity] = useState(0)
   const [listOfCities, setListOfCities] = useState(null)
   const [isEditMode, setEditMode] = useState(false)
@@ -40,14 +40,11 @@ function App() {
     console.log(event.target.value)
     if (isEditMode) {
       setCity(event.target.value)
-      console.log('Сработа таргет-валью')
     }
 
   }
 
   const ChangeCityWithSelect = (event) => {
-    console.log(event)
-    console.log('Сработал объект')
     let myCity = `${event.name}, ${event.country}${event.state ? `, ${event.state}` : ''}`
     setCity(myCity)
     setLongitude(event.lon)

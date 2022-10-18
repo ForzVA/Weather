@@ -8,7 +8,6 @@ const Carousel = ({ children, screenSize }) => {
     const [offset, setOffset] = useState(0)
     const [pageWidth, setPageWidth] = useState(0)
     
-    console.log(Math.floor((screenSize.dynamicWidth - 120) / 208))
     const elemensPerPage = Math.floor((screenSize.dynamicWidth - 80) / 208)
 
     const handleLeftArrowClick = () => {
@@ -32,7 +31,7 @@ const Carousel = ({ children, screenSize }) => {
         })
         )
     }, [])
-    console.log(`полученный скринсайз: ${screenSize.dynamicWidth}`)
+    
     useEffect(() => {
         setOffset(0)
     }, [screenSize.dynamicWidth])

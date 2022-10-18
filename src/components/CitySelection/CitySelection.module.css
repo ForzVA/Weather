@@ -1,12 +1,9 @@
-.citySelection {
-    border-radius: 15px;
-}
-
 .city_card {
     display: flex;
-    width: 290px;
-    border-bottom: 1px solid gray;
-    background-color: rgba(180, 174, 174);
+    width: 286px;
+    border: 1px solid gray;
+    background-color: rgba(255, 255, 255, 1);
+    box-sizing: border-box;
 }
 
 .city_card:hover {
