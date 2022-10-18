@@ -4,8 +4,22 @@ import { WeatherAPI } from '../../api'
 import { getWeatherIcon } from './../../weatherIcons.js'
 
 function TodayWeather({ longitude, latitude }) {
-    let [todayWeatherData, setTodayWeather] = useState(null)
+    const [todayWeatherData, setTodayWeather] = useState(null)
     const [todayWeatherIcon, setTodayWeatherIcon] = useState(null)
+    const [time, setTime] = useState(new Date())
+
+    function refreshClock() {
+        setTime(new Date())
+    }
+
+    useEffect(() => {
+        const timerId = setInterval(refreshClock, 1000)
+        return function cleanup() {
+            clearInterval(timerId)
+        }
+    }, [])
+
+
     useEffect(() => {
         if (setTodayWeather) {
             WeatherAPI.getTodayWeather(longitude, latitude).then(
@@ -15,8 +29,8 @@ function TodayWeather({ longitude, latitude }) {
                 }
             )
         }
-
     }, [longitude, latitude])
+    
     if (todayWeatherData) {
         return (
             <div className={s.todayWeather_wrapper}>
@@ -25,7 +39,7 @@ function TodayWeather({ longitude, latitude }) {
                         {todayWeatherData.name}({todayWeatherData.sys.country})
                     </div>
                     <div className={s.todayWeather_time}>
-                        <span>Сейчас 16:70</span>
+                        <span>{time.toLocaleTimeString()}</span>
                     </div>
                 </div>
                 <div className={s.todayWeather_middle}>
