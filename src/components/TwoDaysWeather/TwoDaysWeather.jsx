@@ -19,7 +19,7 @@ function TwoDaysWeather({ latitude, longitude, screenSize}) {
            WeatherAPI.getFiveDaysAndThreeHoursWeather(longitude, latitude).then(response => {
             let firstArray = []
             let secondArray = []
-            response.list.map(elem => {
+            response.list.forEach(elem => {
                 if (timestampToday >= elem.dt) {
                     firstArray.push(elem)
                 }

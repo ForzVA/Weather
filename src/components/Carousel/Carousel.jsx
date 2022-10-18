@@ -6,7 +6,6 @@ const Carousel = ({ children, screenSize }) => {
 
     const [pages, setPages] = useState([])
     const [offset, setOffset] = useState(0)
-    const [pageWidth, setPageWidth] = useState(0)
     
     const elemensPerPage = Math.floor((screenSize.dynamicWidth - 80) / 208)
 
@@ -31,7 +30,7 @@ const Carousel = ({ children, screenSize }) => {
         })
         )
     }, [])
-    
+
     useEffect(() => {
         setOffset(0)
     }, [screenSize.dynamicWidth])

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import cn from 'classnames'
 import TodayWeather from './components/TodayWeather/TodayWeather';
-import Weather from './components/Weather/Weather';
 import YandexMap from './components/YandexMap/YandexMap';
 import TwoDaysWeather from './components/TwoDaysWeather/TwoDaysWeather';
 import s from './components/Weather/Weather.module.css'
