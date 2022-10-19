@@ -26,7 +26,7 @@ function YandexMap({latitude, longitude, screenSize }) {
                     <ZoomControl options={{
                         size: 'large',
                         position: {
-                            top: 90,
+                            top:20,
                             left: 20
                         }
                     }} />

@@ -50,6 +50,7 @@ button:hover {
     align-items:center;
     width:40%;
     height: 80px;
+    line-height: 40px;
     margin-right: 20px;
     border: 2px solid gray;
     padding: 5px;
@@ -63,6 +64,7 @@ button:hover {
 .weather_header_city_title {
     font-size: 35px;
     font-weight: 400;
+    line-height: 40px;
 }
 
 .weather_header_city_city {
@@ -82,13 +84,16 @@ button:hover {
     height: 30px;
     width: max-content;
     font-size: 22px;
-    border-radius: 15px 15px 0px 0px;
+    border-radius: 15px 15px 15px 15px;
     border: 3px solid gray;
     padding: 1px 5px 1px 7px;
+    margin-top: 8px;
+    z-index: 1;
 }
 
 .weather_header_city__select {
     position: absolute;
+    margin-top: -12px;
 } 
 
 input {
@@ -112,14 +117,24 @@ input {
     }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 600px) {
     .buttons_wrapper {
         display: none;
     }
 
     .weather_header_city {
+        width: 100%;
         flex-direction: column;
         height: auto;
         padding: 15px 10px;
+    }
+
+    .weather_header_city__input {
+        width: 94%;
+    }
+
+    .weather_header_city__select {
+        width: 94%;
+        max-width: 285px;
     }
 }
